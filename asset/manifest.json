@@ -1,0 +1,25 @@
+{
+    "description": "show table of contents for almost any pages in your sidebar",
+    "homepage_url": "https://github.com/chimez/everytoc",
+    "manifest_version": 2,
+    "name": "EveryTOC",
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "<all_urls>"
+    ],
+    "sidebar_action": {
+        "default_title": "EveryTOC",
+        "default_panel": "sidebar.html"
+    },
+    "background": {
+        "scripts": ["js/common.js","js/background.js"]
+    },
+    "version": "0.0.1",
+    "applications": {
+        "gecko": {
+            "id": "everytoc@chimez",
+            "strict_min_version": "58.0a1"
+        }
+    }
+}

@@ -1,0 +1,25 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src"]
+ :dependencies
+ [[binaryage/devtools "0.9.10"]
+  [cider/cider-nrepl "0.19.0-SNAPSHOT"]
+  [reagent "0.8.2-SNAPSHOT" :exclusions [cljsjs/react]]
+  [cljsjs/react-with-addons "15.6.1-0"]]
+ :repositories
+ {"central" {:url "http://mirrors.163.com/maven/repository/maven-public/"}
+  "clojars" {:url "https://mirrors.ustc.edu.cn/clojars/"}}
+ :nrepl {:port 8777
+         :middleware []
+         :init-ns app.everytoc.sidebar}
+ :builds {:main {:target :browser
+                 :output-dir "target/js"
+                 :asset-path "js"
+                 :modules {:common {:entries [app.everytoc.common]}
+                           :background {:entries [app.everytoc.background]
+                                        :depends-on #{:common}}
+                           :sidebar {:entries [app.everytoc.sidebar]
+                                     :depends-on #{:common}}}
+                 :devtools {:preloads [devtools.preload]
+                            :repl-init-ns app.everytoc.sidebar}
+                 :compiler-options {:optimizations :whitespace}}}}
